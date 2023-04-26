@@ -1,0 +1,26 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+**/.DS_Store
+**/node_modules
+**/.idea
+/.idea/.gitignore
+/.idea/libraries/artifact.xml
+/.idea/libraries/artifact1.xml
+/.idea/compiler.xml
+/.idea/libraries/gradle_wrapper.xml
+/.idea/libraries/gradle_wrapper1.xml
+/.idea/libraries/gradle_wrapper2.xml
+/.idea/libraries/gradle_wrapper3.xml
+/.idea/libraries/gradle_wrapper4.xml
+/.idea/libraries/gradle_wrapper5.xml
+/.idea/libraries/gradle_wrapper6.xml
+/.idea/libraries/java_invoke_local_all.xml
+/.idea/LoanAggregator.iml
+/.idea/libraries/loanhub.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
