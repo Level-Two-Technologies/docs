@@ -29,7 +29,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/overview"]
+      "pages": ["api-reference/overview", "api-reference/authentication"]
     },
     {
       "group": "SDKs",
@@ -40,10 +40,7 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/get"
       ]
     }
   ],
@@ -52,5 +49,8 @@
     "auth": {
       "method": "bearer"
     }
+  },
+  "footerSocials": {
+    "website": "http://ltwo.io/"
   }
 }

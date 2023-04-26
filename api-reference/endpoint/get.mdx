@@ -1,84 +1,136 @@
 ---
 title: "Get User"
-api: "GET https://api.mintlify.com/api/user"
-description: "This endpoint gets or creates a new user."
+api: "GET https://api.ltwo.io/api/v1/user"
+description: "This endpoint returns if the cache has the user along with the confidence score and user id"
 ---
 
 ### Body
 
-<ParamField body="name" type="string">
-  This is the name of the user group.
+<ParamField body="firstName" type="string" required>
+  This is the first name of the user.
 </ParamField>
 
-<ParamField body="user_group_id" type="string">
-  This is the ID you use to identify this user group in your database.
+<ParamField body="lastName" type="string" required>
+  This is the last name of the user.
 </ParamField>
 
-<ParamField body="mapping" type="object">
-  This is a JSON mapping of schema id to either the data source that this user group should be
-  associated with or id of the datasource you provided when creating it.
+<ParamField body="dob" type="string" required>
+  This is the date of birth of the user. The supported format are YYYY-DD-MM or MM/DD/YYYY
 </ParamField>
 
-<ParamField body="properties" type="object">
-  This is a JSON object for properties assigned to this user group. These will be accessible through
-  variables in the dashboards and SQL editor
+<ParamField body="ssn" type="string" optional>
+  This is the social security number of the user.
+</ParamField>
+
+<ParamField body="address" type="Address Object" required>
+  <Expandable title="properties">
+    <ParamField name="street" type="string" required>
+      The full street address of the user
+    </ParamField>
+
+    <ParamField name="city" type="string" required>
+      The city of residence of the user
+    </ParamField>
+
+    <ParamField name="state" type="string" required>
+      The state of residence of the user
+    </ParamField>
+
+    <ParamField name="zip" type="number" required>
+      The zipcode of residence of the user
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ### Response
 
-<ResponseField name="success" type="number">
-  Indicates whether the call was successful. 1 if successful, 0 if not.
+<ResponseField name="is_hit" type="boolean" required>
+  Indicates whether the cache has the user information
 </ResponseField>
 
-<ResponseField name="new_user_group" type="boolean">
-  Indicates whether a new user group was created.
+<ResponseField name="user_id" type="string">
+  Unique id of the user. This id can be used to get user credit profile from cache
 </ResponseField>
 
-<ResponseField name="user_group" type="object">
-
-The contents of the user group
-
-<Expandable title="Toggle object">
-
-<ResponseField name="team_id" type="number">
-  This is the internal ID for this user group. You don't need to record this information, since
-  you will not need to use it.
-</ResponseField>
-
-<ResponseField name="token" type="string">
-  This is the user group token (userGroupToken or USER_GROUP_TOKEN) that will be used to identify
-  which user group is viewing the dashboard. You should save this on your end to use when rendering
-  an embedded dashboard.
-</ResponseField>
-
-<ResponseField name="name" type="string">
-  This is the name of the user group provided in the request body.
-</ResponseField>
-
-<ResponseField name="provided_id" type="string">
-  This is the user_group_id provided in the request body.
-</ResponseField>
-
-<ResponseField name="properties" type="JSON or null">
-  This is the properties object if it was provided in the request body
-</ResponseField>
-
-</Expandable>
-
+<ResponseField name="confidence_score" type="decimal">
+  Confidence score of the cache validity based on the profile specified
 </ResponseField>
 
 <RequestExample>
 
-```bash Example Request
-curl --location --request GET 'https://api.mintlify.com/api/user' \
+```bash cURL
+curl --location --request GET 'https://api.ltwo.io/api/v1/user' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
-    "user_group_id": "example_1",
-    "name": "Example 1",
-    "mapping": {"40": "213", "134": "386"},
-    "properties": {"filterValue": "value"}
+  "address": {
+    "street": "535 30 RD A",
+    "city": "Grand Junction",
+    "state": "CO",
+    "zip": "81504"
+  },
+  "dob": "1975-01-01",
+  "firstName": "Clark",
+  "lastName": "Kent",
+  "ssn": "<string>"
 }'
+```
+
+``` bash Python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("api.ltwo.io")
+payload = json.dumps({
+  "address": {
+    "street": "535 30 RD A",
+    "city": "Grand Junction",
+    "state": "CO",
+    "zip": "81504"
+  },
+  "dob": "1975-01-01",
+  "firstName": "Clark",
+  "lastName": "Kent",
+  "ssn": "<string>"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer <token>'
+}
+conn.request("POST", "/api/v1/user", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+``` bash JavaScript
+var data = JSON.stringify({
+  "address": {
+    "street": "535 30 RD A",
+    "city": "Grand Junction",
+    "state": "CO",
+    "zip": "81504"
+  },
+  "dob": "1975-01-01",
+  "firstName": "Clark",
+  "lastName": "Kent",
+  "ssn": "<string>"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://api.ltwo.io/api/v1/user");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer <token>");
+
+xhr.send(data);
 ```
 
 </RequestExample>
@@ -87,14 +139,9 @@ curl --location --request GET 'https://api.mintlify.com/api/user' \
 
 ```json Response
 {
-  "success": 1,
-  "new_user_group": true,
-  "user_group": {
-    "team_id": 3,
-    "token": "<user_group_token_to_auth_dashboard>",
-    "name": "Example 1",
-    "provided_id": "example_1"
-  }
+  "is_hit": true,
+  "user_id": "d3ebbd44-470a-43c5-ab65-a4ed34ef6824",
+  "confidence_score": 8.2
 }
 ```
 
