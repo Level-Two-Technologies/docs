@@ -42,7 +42,8 @@
       "pages": [
         "api-reference/endpoint/user",
         "api-reference/endpoint/order",
-        "api-reference/endpoint/refresh"
+        "api-reference/endpoint/refresh",
+        "api-reference/endpoint/get"
       ]
     }
   ],
