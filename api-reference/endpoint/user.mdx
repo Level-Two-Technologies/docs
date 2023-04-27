@@ -1,7 +1,7 @@
 ---
-title: "Check Cache for User"
+title: "Create a User"
 api: "POST https://api.ltwo.io/api/v1/user"
-description: "This endpoint returns if the cache has the user along with the confidence score and user id"
+description: "This endpoint returns a unique user id along with the the information on the cache availability of the user with the confidence score"
 ---
 
 ### Body
@@ -59,7 +59,7 @@ description: "This endpoint returns if the cache has the user along with the con
 <RequestExample>
 
 ```bash cURL
-curl --location --request GET 'https://api.ltwo.io/api/v1/user' \
+curl --location --request POST 'https://api.ltwo.io/api/v1/user' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{

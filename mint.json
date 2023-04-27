@@ -40,7 +40,9 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/check_cache"
+        "api-reference/endpoint/user",
+        "api-reference/endpoint/order",
+        "api-reference/endpoint/refresh"
       ]
     }
   ],
