@@ -1,7 +1,7 @@
 ---
-title: "Order a Credit Report"
-api: "POST https://api.ltwo.io/api/v1/report"
-description: "This endpoint orders the credit report for a user"
+title: "Order the Income summary"
+api: "POST https://api.ltwo.io/api/v1/income/summary"
+description: "This endpoint orders the income summary a user"
 ---
 
 ### Body
@@ -10,12 +10,8 @@ description: "This endpoint orders the credit report for a user"
   The user id obtained from the create user API
 </ParamField>
 
-<ParamField body="product_code" type="string" required>
-  The code represents the type of report you want to order
-</ParamField>
-
 <ParamField body="from_cache" type="boolean" required>
-  Should the report be retrieved from cache or a fresh report needs to be ordered
+  Should the summary be retrieved from cache or a fresh report needs to be ordered
 </ParamField>
 
 ### Response
@@ -30,12 +26,11 @@ description: "This endpoint orders the credit report for a user"
 
 <RequestExample>
 ```bash cURL
-curl --location --request POST 'https://api.ltwo.io/api/v1/report' \
+curl --location --request POST 'https://api.ltwo.io/api/v1/income/summary' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
     "user_id": "d3ebbd44-470a-43c5-ab65-a4ed34ef6824",
-    "product_code": "fullView",
     "from_cache": true
 }'
 ```

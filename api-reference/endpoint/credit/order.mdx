@@ -1,0 +1,53 @@
+---
+title: "Order a Credit Report"
+api: "POST https://api.ltwo.io/api/v1/credit/report"
+description: "This endpoint orders the credit report for a user"
+---
+
+### Body
+
+<ParamField body="user_id" type="string" required>
+  The user id obtained from the create user API
+</ParamField>
+
+<ParamField body="product_code" type="string" required>
+  The code represents the type of report you want to order
+</ParamField>
+
+<ParamField body="from_cache" type="boolean" required>
+  Should the report be retrieved from cache or a fresh report needs to be ordered
+</ParamField>
+
+### Response
+
+<ResponseField name="report_id" type="string">
+  Unique id of the report ordered
+</ResponseField>
+
+<ResponseField name="token_id" type="string">
+  Unique token to retrieve the report. The token is valid for 30 min only
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --location --request POST 'https://api.ltwo.io/api/v1/credit/report' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "user_id": "d3ebbd44-470a-43c5-ab65-a4ed34ef6824",
+    "product_code": "fullView",
+    "from_cache": true
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "report_id": "a007ace7-becd-44d1-8b5e-2c07ee3226e5",
+  "token_id": "539c7cb6-f416-4c9d-9cae-ebae2a286873"
+}
+```
+
+</ResponseExample>

@@ -1,6 +1,6 @@
 ---
 title: "Refresh the token"
-api: "PUT https://api.ltwo.io/api/v1/report"
+api: "PUT https://api.ltwo.io/api/v1/credit/report"
 description: "This endpoint refreshes the token for getting report"
 ---
 
@@ -26,7 +26,7 @@ description: "This endpoint refreshes the token for getting report"
 
 <RequestExample>
 ```bash cURL
-curl --location --request PUT 'https://api.ltwo.io/api/v1/report' \
+curl --location --request PUT 'https://api.ltwo.io/api/v1/credit/report' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{

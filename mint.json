@@ -38,12 +38,25 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Users",
       "pages": [
-        "api-reference/endpoint/user",
-        "api-reference/endpoint/order",
-        "api-reference/endpoint/refresh",
-        "api-reference/endpoint/get"
+        "api-reference/endpoint/user/user"
+      ]
+    },
+    {
+      "group": "Credit",
+      "pages": [
+        "api-reference/endpoint/credit/order",
+        "api-reference/endpoint/credit/refresh",
+        "api-reference/endpoint/credit/get"
+      ]
+    },
+    {
+      "group": "Income",
+      "pages": [
+        "api-reference/endpoint/income/order",
+        "api-reference/endpoint/income/refresh",
+        "api-reference/endpoint/income/get"
       ]
     }
   ],

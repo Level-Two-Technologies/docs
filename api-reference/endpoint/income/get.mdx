@@ -1,0 +1,129 @@
+---
+title: "Get the income summary"
+api: "GET https://api.ltwo.io/api/v1/income/summary"
+description: "This endpoint retrieves the income summary."
+---
+
+### Query Parameters
+
+<ParamField query="report_id" type="string" required>
+    Report id generated while ordering the report
+</ParamField>
+
+<ParamField query="token_id" type="string" required>
+    Unique token to retrieve the report.
+</ParamField>
+
+### Response
+
+Delivers the income summary that was previously ordered through the Order Income Summary call.
+
+<RequestExample>
+```bash cURL
+curl --location --request GET 'https://api.ltwo.io/api/v1/income/summary?report_id=a007ace7-becd-44d1-8b5e-2c07ee3226e5&token_id=539c7cb6-f416-4c9d-9cae-ebae2a286873' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Respone
+{
+  "individual": {
+    "individual_id": "idv_Cevp4Jw9CIsEeNjpgAAjy2EZt3R",
+    "datasources": [
+      "emp_1t24BlRpGDXmyM2a5CF66wMtgg0"
+    ]
+  },
+  "datarequest_id": "dr_1faOM8Q4efEWIjzdE2SBM2kLq4O",
+  "transaction_id": "trx_1fGUhrSFQ1L4Jd2rOeQiHQgt986",
+  "processing_status": "COMPLETED",
+  "income_summary": [
+    {
+      "datasource": {
+        "id": "emp_1t24BlRpGDXmyM2a5CF66wMtgg0",
+        "type": "EMPLOYER",
+        "name": "Ltwo"
+      },
+      "as_of_date": 1621961695927,
+      "remitter": {
+        "name": "Ltwo",
+        "phone_number": null,
+        "address": {
+          "addr1": "535 Mission Street",
+          "addr2": "14th floor",
+          "city": "San Francisco",
+          "state_name": "CA",
+          "zipcode": "94105",
+          "country": {
+            "name": "United States"
+          }
+        }
+      },
+      "beneficiary": {
+        "first_name": "John",
+        "middle_name": "Doe",
+        "last_name": "J.",
+        "email": "john.doe@example.com",
+        "prefix": "Mr.",
+        "suffix": "Jr.",
+        "gender": "M",
+        "date_of_birth": null,
+        "phone_number": null,
+        "ssn": "000-00-0000",
+        "address": {
+          "addr1": "102 Main Street",
+          "addr2": null,
+          "city": "Smalltown",
+          "state_name": "CA",
+          "zipcode": "98765",
+          "country": {
+            "name": "US"
+          }
+        }
+      },
+      "earnings": [
+        {
+          "type": "SALARY",
+          "basis": "SEMI_MONTHLY",
+          "interval": {
+            "start_date": 1609439400000,
+            "end_date": 1610649000000
+          },
+          "amounts": [
+            {
+              "currency": "USD",
+              "type": "GROSS",
+              "ytd_flag": false,
+              "value": 3096
+            }
+          ]
+        },
+        {
+          "type": "SALARY",
+          "basis": "SEMI_MONTHLY",
+          "interval": {
+            "start_date": 1610735400000,
+            "end_date": 1612031400000
+          },
+          "amounts": [
+            {
+              "currency": "USD",
+              "type": "GROSS",
+              "ytd_flag": false,
+              "value": 3672
+            }
+          ]
+        }
+      ],
+      "reason_codes": [
+        {
+          "code": "MIE_VF_DPC",
+          "description": "Verification method: Direct payroll account connection"
+        }
+      ]
+    }
+  ]
+}
+```
+</ResponseExample>
