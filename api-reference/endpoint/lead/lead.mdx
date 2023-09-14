@@ -1,0 +1,70 @@
+---
+title: "Persona Match"
+api: "POST https://{{BASE_URL}}/api/v1/lead"
+description: "This endpoint returns if or not the given lead matches with each of the personas."
+---
+
+## Headers
+
+<ParamField header="Content-Type" type="string" required>
+  Specifies that the data being sent is in JSON format.
+</ParamField>
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token used for authentication. Ensure the token is kept secure.
+</ParamField>
+
+## Request Body
+
+The request body should be in JSON format and contains personal and financial information of the lead.
+
+### Fields:
+<ParamField body="first_name" type="string" required>
+  The lead's first name.
+</ParamField>
+
+<ParamField body="last_name" type="string" required>
+  The lead's last name.
+</ParamField>
+
+<ParamField body="address_line_1" type="string" required>
+  Address details (line 1).
+</ParamField>
+
+<ParamField body="address_line_2" type="string" optional>
+  Address details (line 2).
+</ParamField>
+
+<ParamField body="city" type="string" optional>
+  City.
+</ParamField>
+
+<ParamField body="state" type="string" optional>
+  State.
+</ParamField>
+
+<ParamField body="zip" type="string" optional>
+  Zip code.
+</ParamField>
+
+<ParamField body="date_of_birth" type="date" optional>
+  The lead's date of birth.
+</ParamField>
+
+<ParamField body="social_security_number" type="string" optional>
+  The lead's SSN.
+</ParamField>
+
+<ParamField body="self_reported_income" type="string" optional>
+  The income reported by the lead.
+</ParamField>
+
+<ParamField body="email" type="string" optional>
+  Email contact.
+</ParamField>
+
+<ParamField body="phone" type="string" optional>
+  Phone contact.
+</ParamField>
+
+The `refresh` field indicates whether to refresh any existing data for the lead.

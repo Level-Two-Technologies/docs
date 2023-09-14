@@ -1,0 +1,59 @@
+---
+title: "Refresh Token"
+api: "POST https://{{BASE_URL}}/api/v1/auth/token"
+description: "This endpoint authenticates the user and returns a unique token for subsequent requests."
+---
+
+## Body
+
+<ParamField body="grant_type" type="string" required>
+  Method used for obtaining a token. For password-based authentication, use "password".
+</ParamField>
+
+<ParamField body="username" type="string" required>
+  The email address associated with the account.
+</ParamField>
+
+<ParamField body="password" type="string" required>
+  Password corresponding to the username provided.
+</ParamField>
+
+## Response
+
+<ResponseField name="refresh_token" type="string" required>
+  Token that can be used to obtain a new access token when the current one expires.
+</ResponseField>
+
+<ResponseField name="access_token" type="string" required>
+  Token returned after successful authentication. Use this token for "Authorization" in subsequent requests.
+</ResponseField>
+
+<ResponseField name="token_type" type="string">
+  Type of token. Commonly "Bearer".
+</ResponseField>
+
+<ResponseField name="expires_in" type="number">
+  Duration (in seconds) before the token expires.
+</ResponseField>
+
+## Examples
+
+### cURL:
+
+```bash
+Request:
+curl -X POST 'https://{BASE_URL}/api/v1/auth/token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "grant_type": "password",
+  "username": "user@company.com",
+  "password": "zn:anb2kebk32n."
+}'
+
+Response:
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "dGhpc2lzYXNhbXBsZXJlZnJlc2h0b2tlbg"
+}

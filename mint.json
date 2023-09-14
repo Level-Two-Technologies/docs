@@ -29,7 +29,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/overview", "api-reference/authentication"]
+      "pages": ["api-reference/overview"]
     },
     {
       "group": "SDKs",
@@ -38,25 +38,16 @@
       ]
     },
     {
-      "group": "Users",
+      "group": "Authentication",
       "pages": [
-        "api-reference/endpoint/user/user"
+        "api-reference/endpoint/authentication/refresh-token",
+        "api-reference/endpoint/authentication/access-token"
       ]
     },
     {
-      "group": "Credit",
+      "group": "Lead",
       "pages": [
-        "api-reference/endpoint/credit/order",
-        "api-reference/endpoint/credit/refresh",
-        "api-reference/endpoint/credit/get"
-      ]
-    },
-    {
-      "group": "Income",
-      "pages": [
-        "api-reference/endpoint/income/order",
-        "api-reference/endpoint/income/refresh",
-        "api-reference/endpoint/income/get"
+        "api-reference/endpoint/lead/lead"
       ]
     }
   ],

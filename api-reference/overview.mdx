@@ -1,32 +1,38 @@
 ---
-title: "API Overview"
+title: "Overview"
 description: "Get started with the LevelTwo API"
 ---
 
-# Backend Integration Guide
+# Integration Guide
 
 This guide shows you how to use LevelTwo with just the API and without any frontend components or SDKs. This is useful if you are integrating with a system that already has a frontend, or if you are building a custom frontend.
 
 ## How it Works
-1. [Get your API Keys](#getting-your-api-keys)
-2. [Create a user](#create-user)
-3. [Order Credit Report](#order-credit-report)
-4. [Order Income Summary](#order-income-summary)
+1. [Signing Up](#signing-up)
+2. [Authentication](#authentication)
+2. [Create a Persona](#create-a-persona)
+3. [Get matching personas for a Lead](#get-matching-personas-for-a-lead)
 
-## Getting your API Keys
+## Signing Up
 
-You can find your API key and Organization ID by contacting the LevelTwo team. The key will only be available post the customer profile specification by the partner. Soon it will be available in the [LevelTwo Dashboard](https://ltwo.io/dashboard/developers).
+Register your username and password by contacting the LevelTwo team. 
+<b>Do NOT expose or store the credentials on the front-end or public client</b>
+Use this to get the access token to be used in Bearer Authentication for all subsequent API calls.
 
-<b>Do NOT expose this key on the front-end</b>, it is for back-end use only.
+## Authentication
 
-## Create user
+Obtain the access token using the token API and append it in the header of each request.
+```bash
+'Authorization': 'Bearer <api_key>'
+```
 
-You can send the details of your customer to create a user id and check if their financial data is cached or not. The API returns the confidence score along with the availability based on the profile configured by the partner.
+## Create a Persona
 
-## Order Credit Report
+A persona is a set of rules over different attributes like date of birth, address, last name, etc. 
+To create these fill the details and share with the LevelTwo team. Any number of these can be created.
+Also, a unique identifier will be shared which can be used to interpret the API results.
 
-The Credit Report is a compilation of data on an individual that is helpful in making decisions in many types of consumer transactions. The Credit Report contains various data about the consumer, including indicative information (name, addresses, date of birth, and Social Security number), employment information, and the consumer's credit history.
+## Get matching personas for a Lead
 
-## Order Income Summary
-
-Retrieves a summary of an Individual's income based on the income related Items, including salary and other income related information. Ltwo uses a set of heuristics to make a final determination summarized as Reason Codes.
+Given that there are a bunch of prepopulated personas. Any new lead can be matched against those 
+and in case of a absolute match the unique identifier will be mapped to true in the response.
