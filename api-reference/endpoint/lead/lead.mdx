@@ -1,6 +1,6 @@
 ---
 title: "Persona Match"
-api: "POST https://{{BASE_URL}}/v1/lead"
+api: "POST https://{ BASE_URL }/v1/lead"
 description: "This endpoint returns if or not the given lead matches with each of the personas."
 ---
 
@@ -87,7 +87,7 @@ The `refresh` field indicates whether to refresh any existing data for the lead.
 
 ```bash
 Request:
-curl --location 'https://{BASE_URL}/v1/lead/' \
+curl --location 'https://{{ BASE_URL }}/v1/lead/' \
 --header 'Authorization: Bearer eyJraWQiOiJxMU5iVlFWTmtGRkpaK3hIcklFYmM5Z0ltdlVrZUk3ZjdidjZXbWYyMzNRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJjNDA4MjRmOC03MGYxLTcwZDEtODhjMS02NWQ0MWQzY2Y0ZWUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9lcHMwMmhnWnkiLCJjbGllbnRfaWQiOiJtaWNtdm9oNzIyOXE0NzgzZDR1dG5zdjFlIiwib3JpZ2luX2p0aSI6IjYxNzA5MDBmLTJmNTYtNDI5OC1hYjU5LTllZWMyYzY4M2YxNiIsImV2ZW50X2lkIjoiNjk1YmU1NGYtYjBmZi00MmY1LWJkZjMtNjkwMDM3OTM5OGViIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTY5NTY5NjYwNCwiZXhwIjoxNjk1NzAwMjA0LCJpYXQiOjE2OTU2OTY2MDQsImp0aSI6ImExOGUzZDk4LTY1NzQtNDJhYi1hMjZkLWQ3OGRkOWNkNjdhZiIsInVzZXJuYW1lIjoiYzQwODI0ZjgtNzBmMS03MGQxLTg4YzEtNjVkNDFkM2NmNGVlIn0.a-TeuWmxBV_9pm5cvoXJqdF1jolZoFcE-6_O6SAa5sEgpOKU7dKIva0tBOPxJbGFGi3OCQCgXwy4R0NfdfPKgGKHKnhNOoNhxH02g5fPbyXKcbC-iC75dMk5tDb-dQyalg34M6kvOzw-aIb8INHqc9FUYCfCKfWTCJ9GkkamHhDiv1pBZNAB_HEWqxHBDm7c9289F7j2P29UrYX4XvxozTJw7RrDv95EKmxbFy2eftPBmmcjGluFOJgEnZ7PJkTwdU3x_Y9ATCsea7mqpNoZD1gH82vEkWvdCJvekg65upY0HqVS4tXF98Xzl56jk_z-q2_G-9F2V8X9ibQb6KCCcw' \
 --header 'Content-Type: application/json' \
 --data-raw '{

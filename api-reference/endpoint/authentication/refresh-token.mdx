@@ -1,6 +1,6 @@
 ---
 title: "Refresh Token"
-api: "POST https://{{BASE_URL}}/v1/auth/token"
+api: "POST https://{ BASE_URL }/v1/auth/token"
 description: "This endpoint authenticates the user and returns a unique token for subsequent requests."
 ---
 
@@ -42,7 +42,7 @@ description: "This endpoint authenticates the user and returns a unique token fo
 
 ```bash
 Request:
-curl --location 'https://{BASE_URL}/v1/auth/token' \
+curl --location 'https://{{ BASE_URL }}/v1/auth/token' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "grant_type": "password",
