@@ -1,6 +1,6 @@
 ---
 title: "Refresh Token"
-api: "POST https://{{BASE_URL}}/api/v1/auth/token"
+api: "POST https://{{BASE_URL}}/v1/auth/token"
 description: "This endpoint authenticates the user and returns a unique token for subsequent requests."
 ---
 
@@ -42,18 +42,18 @@ description: "This endpoint authenticates the user and returns a unique token fo
 
 ```bash
 Request:
-curl -X POST 'https://{BASE_URL}/api/v1/auth/token' \
+curl --location 'https://{BASE_URL}/v1/auth/token' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "grant_type": "password",
-  "username": "user@company.com",
-  "password": "zn:anb2kebk32n."
+    "grant_type": "password",
+    "username": "admin@finbank.com",
+    "password": "zn29032A-.tYrLuxYqw."
 }'
 
 Response:
 {
+  "refresh_token": "dGhpc2lzYXNhbXBsZXJlZnJlc2h0b2tlbag.283bjdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.2j21nKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQc2",
   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
   "token_type": "Bearer",
-  "expires_in": 3600,
-  "refresh_token": "dGhpc2lzYXNhbXBsZXJlZnJlc2h0b2tlbg"
+  "expires_in": 3600
 }
